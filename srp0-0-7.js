@@ -60,6 +60,11 @@ srp({
  */
 function runPHP(req, response, ini) {
     try {
+        if(/\.\./.test(req.url)){
+            response.end();
+console.log(req.url);
+            return;
+        }
         //对伪静态的处理
         var static = ini.addPath + req.url;
         for (var value in ini.static) {
